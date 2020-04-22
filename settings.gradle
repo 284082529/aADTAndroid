@@ -1,0 +1,13 @@
+include ':app'
+rootProject.name='aADTAndroid'
+
+// Include the host app project.
+include ':app'                                     // assumed existing content
+setBinding(new Binding([gradle: this]))                                 // new
+evaluate(new File(                                                      // new
+        settingsDir.parentFile,                                               // new
+        'flutter_engine/.android/include_flutter.groovy'                          // new
+))
+
+include ':flutter_engine'
+project(':flutter_engine').projectDir = new File('../flutter_engine')
